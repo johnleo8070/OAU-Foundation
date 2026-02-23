@@ -1,4 +1,5 @@
 import heroImg from "@/assets/hero-img.jpeg";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => (
   <section id="home" className="relative min-h-screen flex items-center gradient-navy overflow-hidden pt-20">
@@ -15,18 +16,18 @@ const HeroSection = () => (
           Founder of <span className="font-semibold text-gold">THE OAU FOUNDATION</span>, dedicated to uplifting communities and empowering individuals.
         </p>
         <div className="flex gap-4 justify-center md:justify-start">
-          <a
-            href="#about"
+          <Link
+            to="/bio"
             className="gradient-gold text-navy font-body font-semibold px-8 py-3 rounded-md hover:opacity-90 transition-opacity"
           >
             Learn More
-          </a>
-          <a
-            href="#join"
+          </Link>
+          <Link
+            to="/get-involved"
             className="border border-gold text-gold font-body font-semibold px-8 py-3 rounded-md hover:bg-gold/10 transition-colors"
           >
             Join Us
-          </a>
+          </Link>
         </div>
       </div>
 

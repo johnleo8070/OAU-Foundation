@@ -1,4 +1,5 @@
 import { BookOpen, HeartPulse, TrendingUp, HandHelping, Siren, Coins } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const areas = [
   { label: "Education", icon: BookOpen },
@@ -26,6 +27,9 @@ const FocusAreasSection = () => (
           </div>
         ))}
       </div>
+      <Link to="/foundation" className="inline-block mt-10 gradient-gold text-navy font-body font-semibold px-8 py-3 rounded-md hover:opacity-90 transition-opacity">
+        Read More
+      </Link>
     </div>
   </section>
 );
