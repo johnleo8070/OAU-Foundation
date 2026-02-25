@@ -1,5 +1,6 @@
 import { Heart, Shield, Users, AlertTriangle } from "lucide-react";
 import logo from "@/assets/logo.png";
+import { motion } from "framer-motion";
 
 const pillars = [
   {
@@ -24,33 +25,86 @@ const pillars = [
   },
 ];
 
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.2,
+    }
+  }
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50, scale: 0.9, rotateX: 15 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    rotateX: 0,
+    transition: { type: "spring" as const, stiffness: 100, damping: 20 }
+  }
+};
+
 const FoundationSection = () => (
-  <section id="about" className="py-24 bg-cream">
-    <div className="container mx-auto px-4">
+  <section id="about" className="py-24 bg-cream relative overflow-hidden">
+    {/* Decorative background circle */}
+    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[100px] -translate-y-1/2 translate-x-1/2" />
+
+    <div className="container mx-auto px-4 relative z-10">
       {/* Intro */}
-      <div className="max-w-3xl mx-auto text-center mb-16 space-y-4">
-        <img src={logo} alt="OAU Foundation Logo" className="h-24 mx-auto mb-4" />
-        <h2 className="text-3xl sm:text-4xl font-display font-bold text-navy">
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ type: "spring", stiffness: 50, damping: 20 }}
+        className="max-w-4xl mx-auto text-center mb-20 space-y-6"
+      >
+        <motion.img
+          initial={{ scale: 0, rotate: -10 }}
+          whileInView={{ scale: 1, rotate: 0 }}
+          transition={{ type: "spring", stiffness: 100, damping: 15 }}
+          src={logo}
+          alt="OAU Foundation Logo"
+          className="h-28 mx-auto mb-6 drop-shadow-xl"
+        />
+        <h2 className="text-4xl sm:text-5xl font-display font-black text-navy tracking-tight">
           THE OAU FOUNDATION
         </h2>
-        <p className="text-warm-gray font-body text-lg leading-relaxed">
-          A foundation whose mission is dedicated to impacting humanity through humanitarian efforts. The OAU Foundation is a humanitarian non-governmental organization (NGO) dedicated to improving the lives of individuals and communities in need. Our foundation works tirelessly to promote sustainable development, alleviate poverty, and provide humanitarian assistance to vulnerable populations.
+        <div className="w-24 h-1 gradient-gold mx-auto rounded-full mb-8" />
+        <p className="text-warm-gray font-body text-xl leading-relaxed font-light">
+          A foundation whose mission is dedicated to impacting humanity through humanitarian efforts. The OAU Foundation is a humanitarian non-governmental organization (NGO) dedicated to improving the lives of individuals and communities in need.
         </p>
-      </div>
+      </motion.div>
 
       {/* Pillar Cards */}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-50px" }}
+        className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 Perspective-[1000px]"
+      >
         {pillars.map((p) => (
-          <div
+          <motion.div
             key={p.title}
-            className="bg-card rounded-lg p-6 shadow-md hover:shadow-xl transition-shadow border-t-4 border-gold group"
+            variants={itemVariants}
+            whileHover={{ y: -15, rotateY: 5, rotateX: -5 }}
+            className="bg-white rounded-[1.5rem] p-8 shadow-xl hover:shadow-2xl transition-all border-t-8 border-gold group relative overflow-hidden"
           >
-            <p.icon className="text-gold mb-4 group-hover:scale-110 transition-transform" size={36} />
-            <h3 className="font-display font-semibold text-navy text-lg mb-2">{p.title}</h3>
-            <p className="text-warm-gray font-body text-sm leading-relaxed">{p.desc}</p>
-          </div>
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <motion.div
+              whileHover={{ scale: 1.2, rotate: 10 }}
+              className="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors"
+            >
+              <p.icon className="text-gold" size={32} />
+            </motion.div>
+            <h3 className="font-display font-bold text-navy text-xl mb-4 group-hover:text-gold transition-colors">{p.title}</h3>
+            <p className="text-warm-gray font-body text-sm leading-relaxed opacity-80">{p.desc}</p>
+          </motion.div>
         ))}
-      </div>
+      </motion.div>
     </div>
   </section>
 );

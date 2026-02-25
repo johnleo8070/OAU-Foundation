@@ -2,6 +2,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Calendar, ArrowRight } from "lucide-react";
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const featuredContent = [
   "Former Abia governorship candidate and founder of the OAU foundation, Hon Onyekwere Akym Uche (OAU), has reaffirmed that his political ambition is firmly rooted in a desire to serve the people rather than pursue personal gain, stressing that leadership must be guided by humility, accountability, and a strong sense of responsibility to the public.",
@@ -43,53 +44,106 @@ const News = () => {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen overflow-hidden">
       <Navbar />
 
       <section className="pt-28 pb-8 gradient-navy text-center">
-        <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="container mx-auto px-4"
+        >
           <h1 className="text-4xl sm:text-5xl font-display font-bold text-gold-light mb-4">News</h1>
           <p className="text-gold-light/70 font-body text-lg">Stay updated with the latest from OAU.</p>
-        </div>
+        </motion.div>
       </section>
 
       <section className="py-16 bg-cream">
         <div className="container mx-auto px-4">
           {/* Featured */}
-          <div className="bg-card rounded-lg shadow-lg border-t-4 border-gold p-8 mb-12">
-            <div className="flex items-center gap-2 text-warm-gray font-body text-sm mb-3">
-              <Calendar size={14} />
-              <span>Featured Article</span>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            layout
+            className="bg-card rounded-xl shadow-xl border-t-4 border-gold p-8 mb-16 overflow-hidden"
+          >
+            <div className="flex items-center gap-2 text-warm-gray font-body text-xs sm:text-sm mb-4">
+              <Calendar size={14} className="text-gold" />
+              <span className="font-semibold uppercase tracking-wider">Featured Article</span>
             </div>
-            <h2 className="text-2xl sm:text-3xl font-display font-bold text-navy mb-4">
+            <h2 className="text-2xl sm:text-3xl font-display font-bold text-navy mb-6">
               My Ambition Has Always Been About Service, Not Self — Onyekwere Akym Uche Declares
             </h2>
             <div className="text-warm-gray font-body leading-relaxed space-y-4">
-              {(expanded ? featuredContent : featuredContent.slice(0, 2)).map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
+              <AnimatePresence mode="wait">
+                {(expanded ? featuredContent : featuredContent.slice(0, 2)).map((p, i) => (
+                  <motion.p
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.1 }}
+                  >
+                    {p}
+                  </motion.p>
+                ))}
+              </AnimatePresence>
             </div>
-            <button
+            <motion.button
+              whileHover={{ x: 5 }}
               onClick={() => setExpanded(!expanded)}
-              className="mt-4 text-gold font-body font-semibold hover:underline flex items-center gap-1"
+              className="mt-8 text-gold font-body font-bold text-sm tracking-widest uppercase flex items-center gap-2 hover:text-gold-dark transition-colors"
             >
-              {expanded ? "Show Less" : "Read More"} <ArrowRight size={14} />
-            </button>
-          </div>
+              {expanded ? "Show Less" : "Read More"} <ArrowRight size={16} />
+            </motion.button>
+          </motion.div>
 
           {/* Other News */}
-          <h3 className="text-2xl font-display font-bold text-navy mb-6">Other News</h3>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <motion.h3
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-2xl font-display font-bold text-navy mb-8 px-2"
+          >
+            Other News
+          </motion.h3>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={{
+              hidden: { opacity: 0 },
+              visible: {
+                opacity: 1,
+                transition: { staggerChildren: 0.1 }
+              }
+            }}
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {otherNews.map((article, i) => (
-              <div key={i} className="bg-card rounded-lg p-6 shadow-md border-l-4 border-gold hover:shadow-xl transition-shadow">
-                <h4 className="font-display font-semibold text-navy text-lg mb-2 line-clamp-2">{article.title}</h4>
-                <p className="text-warm-gray font-body text-sm leading-relaxed mb-3">{article.excerpt}</p>
-                <button className="text-gold font-body font-semibold text-sm hover:underline flex items-center gap-1">
-                  Read more <ArrowRight size={12} />
-                </button>
-              </div>
+              <motion.div
+                key={i}
+                variants={{
+                  hidden: { opacity: 0, scale: 0.95, y: 20 },
+                  visible: { opacity: 1, scale: 1, y: 0 }
+                }}
+                whileHover={{ y: -8 }}
+                className="bg-card rounded-xl p-8 shadow-lg border-l-4 border-gold hover:shadow-2xl transition-all h-full flex flex-col justify-between"
+              >
+                <div>
+                  <h4 className="font-display font-bold text-navy text-xl mb-4 line-clamp-2 leading-snug">{article.title}</h4>
+                  <p className="text-warm-gray font-body text-sm leading-relaxed mb-6 opacity-80">{article.excerpt}</p>
+                </div>
+                <motion.button
+                  whileHover={{ x: 5 }}
+                  className="text-gold font-body font-bold text-xs tracking-widest uppercase flex items-center gap-2 mt-auto"
+                >
+                  Read more <ArrowRight size={14} />
+                </motion.button>
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </section>
 
