@@ -19,7 +19,7 @@ const FormCard = ({ title, icon: Icon, fields, delay }: { title: string; icon: R
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.6, delay }}
-      className="bg-card rounded-lg p-8 shadow-lg border-t-4 border-gold h-full"
+      className="bg-card rounded-[2rem] p-8 md:p-12 shadow-xl border-t-4 border-gold h-full"
     >
       <div className="flex items-center gap-3 mb-6">
         <motion.div
@@ -41,7 +41,7 @@ const FormCard = ({ title, icon: Icon, fields, delay }: { title: string; icon: R
                 rows={3}
                 value={form[field] || ""}
                 onChange={(e) => setForm({ ...form, [field]: e.target.value })}
-                className="w-full border border-border rounded-md px-3 py-2 font-body text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none transition-all"
+                className="w-full border border-border rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none transition-all"
               />
             ) : (
               <input
@@ -50,7 +50,7 @@ const FormCard = ({ title, icon: Icon, fields, delay }: { title: string; icon: R
                 maxLength={field === "Email" ? 255 : 100}
                 value={form[field] || ""}
                 onChange={(e) => setForm({ ...form, [field]: e.target.value })}
-                className="w-full border border-border rounded-md px-3 py-2 font-body text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-all"
+                className="w-full border border-border rounded-xl px-4 py-3 font-body text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-all"
               />
             )}
           </div>
@@ -59,7 +59,7 @@ const FormCard = ({ title, icon: Icon, fields, delay }: { title: string; icon: R
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           type="submit"
-          className="gradient-gold text-navy font-body font-semibold px-8 py-3 rounded-md hover:opacity-90 transition-all w-full shadow-lg mt-4"
+          className="gradient-gold text-navy font-body font-bold px-8 py-4 rounded-full hover:shadow-lg transition-all w-full mt-4"
         >
           Send
         </motion.button>
@@ -89,7 +89,7 @@ const GetInvolved = () => (
         <FormCard
           title="Volunteer"
           icon={Users}
-          fields={["Full Name", "Email", "Phone", "How would you like to help?"]}
+          fields={["Organization Name", "Full Name", "Email", "Phone", "How would you like to help?"]}
           delay={0}
         />
         <FormCard

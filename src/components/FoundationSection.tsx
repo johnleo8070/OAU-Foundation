@@ -91,9 +91,9 @@ const FoundationSection = () => (
             key={p.title}
             variants={itemVariants}
             whileHover={{ y: -15, rotateY: 5, rotateX: -5 }}
-            className="bg-white rounded-[1.5rem] p-8 shadow-xl hover:shadow-2xl transition-all border-t-8 border-gold group relative overflow-hidden"
+            className="bg-white rounded-[1.5rem] p-8 shadow-xl hover:shadow-2xl transition-all border-t-8 border-navy group relative overflow-hidden"
           >
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gold/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-navy/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
             <motion.div
               whileHover={{ scale: 1.2, rotate: 10 }}
               className="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors"
