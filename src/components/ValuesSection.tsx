@@ -29,7 +29,7 @@ const ValuesSection = () => (
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5 }}
         className="text-center mb-20"
       >
@@ -46,7 +46,7 @@ const ValuesSection = () => (
               key={v.title}
               initial={{ opacity: 0, y: 10 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.4, delay: i * 0.1 }}
               className="flex gap-6 group"
             >
@@ -64,7 +64,7 @@ const ValuesSection = () => (
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
           className="flex justify-center"
         >
@@ -73,6 +73,8 @@ const ValuesSection = () => (
             <img
               src={aboutImg}
               alt="Onyekwere Akym Uche seated"
+              loading="lazy"
+              decoding="async"
               className="relative z-10 rounded-[2.5rem] shadow-2xl w-80 lg:w-96 object-cover border-8 border-white group-hover:scale-[1.02] transition-transform duration-500"
             />
           </div>

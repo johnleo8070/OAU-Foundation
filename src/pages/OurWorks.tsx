@@ -65,8 +65,8 @@ const OurWorks = () => {
         {/* Cinematic Background Layer */}
         <motion.div style={{ y }} className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy to-navy z-10" />
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/10 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2" />
-          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-navy-light/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2" />
+          <div className="absolute top-0 right-0 w-[300px] lg:w-[600px] h-[300px] lg:h-[600px] bg-gold/10 rounded-full blur-[60px] lg:blur-[120px] -translate-y-1/2 translate-x-1/2" />
+          <div className="absolute bottom-0 left-0 w-[250px] lg:w-[500px] h-[250px] lg:h-[500px] bg-navy-light/10 rounded-full blur-[50px] lg:blur-[100px] translate-y-1/2 -translate-x-1/2" />
         </motion.div>
 
         <div className="container mx-auto px-4 relative z-20">
@@ -122,6 +122,8 @@ const OurWorks = () => {
                   <img
                     src={traditionalImg}
                     alt="Onyekwere Akym Uche"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full max-w-[420px] h-auto object-cover scale-[1.02]"
                   />
                   {/* Glass Overlay on Bottom */}
@@ -148,7 +150,7 @@ const OurWorks = () => {
               <motion.div
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 className="space-y-8"
               >
                 <div className="w-16 h-1 gradient-gold rounded-full" />
@@ -176,7 +178,7 @@ const OurWorks = () => {
                     key={i}
                     initial={{ opacity: 0, scale: 0.9 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ delay: i * 0.1 }}
                     className={`${item.color === "bg-navy"
                       ? "bg-navy text-white"
@@ -210,7 +212,7 @@ const OurWorks = () => {
                     key={i}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ delay: i * 0.1 }}
                     className="p-1 rounded-[2.5rem] bg-gradient-to-br from-gold/30 to-transparent shadow-xl"
                   >
@@ -244,7 +246,7 @@ const OurWorks = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {images.map((img, i) => (
@@ -257,6 +259,8 @@ const OurWorks = () => {
                   <img
                     src={img.src}
                     alt={img.alt}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                 </div>
@@ -292,7 +296,7 @@ const OurWorks = () => {
                 key={i}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.1 }}
                 transition={{ delay: i * 0.2 }}
                 className="group relative"
               >
@@ -306,6 +310,7 @@ const OurWorks = () => {
                     src={`https://www.youtube.com/embed/${vId}?rel=0&modestbranding=1`}
                     title="YouTube video player"
                     frameBorder="0"
+                    loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     className="w-full h-full"
                     allowFullScreen
@@ -333,7 +338,7 @@ const OurWorks = () => {
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             className="max-w-4xl mx-auto space-y-12"
           >
             <div className="inline-block p-4 rounded-3xl bg-slate-50 border border-navy/5 shadow-inner">

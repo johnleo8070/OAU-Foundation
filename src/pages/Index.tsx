@@ -21,8 +21,8 @@ const Index = () => (
     {/* Brief Foundation Intro */}
     <section className="py-24 bg-white/50 relative overflow-hidden">
       {/* Decorative blobs - Simplified for performance */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold/5 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-navy/5 rounded-full blur-[60px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold/5 rounded-full blur-md lg:blur-[60px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-navy/5 rounded-full blur-md lg:blur-[60px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 lg:gap-12 relative z-10">
@@ -31,7 +31,7 @@ const Index = () => (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.4 }}
             whileHover={{ y: -5 }}
             className="bg-white rounded-[2rem] p-8 md:p-10 shadow-xl border border-gray-100 hover:shadow-2xl transition-all group relative overflow-hidden"
@@ -63,7 +63,7 @@ const Index = () => (
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 0.4, delay: 0.1 }}
             whileHover={{ y: -5 }}
             className="bg-white rounded-[2rem] p-8 md:p-10 shadow-xl border border-gray-100 hover:shadow-2xl transition-all group relative overflow-hidden"
@@ -106,14 +106,14 @@ const Index = () => (
     {/* Our Works Preview - Featured Videos */}
     <section className="py-24 bg-cream relative overflow-hidden">
       {/* Decorative background elements - Simplified */}
-      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold/5 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-navy/5 rounded-full blur-[60px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[300px] h-[300px] bg-gold/5 rounded-full blur-md lg:blur-[60px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-navy/5 rounded-full blur-md lg:blur-[60px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.4 }}
           className="text-center mb-16 space-y-4"
         >
@@ -134,7 +134,7 @@ const Index = () => (
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6, staggerChildren: 0.1 }}
           className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
         >
@@ -158,6 +158,7 @@ const Index = () => (
                     src={`https://www.youtube.com/embed/${vId}`}
                     title="YouTube video player"
                     frameBorder="0"
+                    loading="lazy"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     referrerPolicy="strict-origin-when-cross-origin"
                     allowFullScreen

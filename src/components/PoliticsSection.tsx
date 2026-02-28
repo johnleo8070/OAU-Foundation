@@ -10,7 +10,7 @@ const PoliticsSection = () => (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6 }}
         className="flex justify-center"
       >
@@ -19,6 +19,8 @@ const PoliticsSection = () => (
           <img
             src={politicsImg}
             alt="OAU in traditional attire"
+            loading="lazy"
+            decoding="async"
             className="relative z-10 rounded-[2rem] shadow-2xl w-80 md:w-96 object-cover border-4 border-white/10 group-hover:scale-[1.02] transition-transform duration-500"
           />
         </div>
@@ -27,7 +29,7 @@ const PoliticsSection = () => (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className="space-y-8 text-center md:text-left"
       >

@@ -57,7 +57,7 @@ const FoundationSection = () => (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6 }}
         className="max-w-4xl mx-auto text-center mb-20 space-y-6"
       >
@@ -67,6 +67,8 @@ const FoundationSection = () => (
           transition={{ duration: 0.5 }}
           src={logo}
           alt="OAU Foundation Logo"
+          loading="lazy"
+          decoding="async"
           className="h-28 mx-auto mb-6 drop-shadow-xl"
         />
         <h2 className="text-4xl sm:text-5xl font-display font-black text-navy tracking-tight">
@@ -83,7 +85,7 @@ const FoundationSection = () => (
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
       >
         {pillars.map((p) => (

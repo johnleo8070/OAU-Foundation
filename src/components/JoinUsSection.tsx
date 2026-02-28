@@ -16,14 +16,14 @@ const JoinUsSection = () => {
   return (
     <section id="join" className="py-24 bg-cream overflow-hidden relative">
       {/* Decorative Background Elements - Simplified */}
-      <div className="absolute top-0 left-0 w-80 h-80 bg-gold/5 rounded-full blur-[80px] -translate-x-1/2 -translate-y-1/2" />
-      <div className="absolute bottom-0 right-0 w-80 h-80 bg-navy-light/5 rounded-full blur-[80px] translate-x-1/2 translate-y-1/2" />
+      <div className="absolute top-0 left-0 w-80 h-80 bg-gold/5 rounded-full blur-md lg:blur-[80px] -translate-x-1/2 -translate-y-1/2" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-navy-light/5 rounded-full blur-md lg:blur-[80px] translate-x-1/2 translate-y-1/2" />
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.1 }}
           transition={{ duration: 0.6 }}
           className="bg-white/40 border border-white/20 rounded-[3.5rem] p-8 md:p-16 shadow-xl relative overflow-hidden"
         >
@@ -35,7 +35,7 @@ const JoinUsSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.5 }}
               className="text-center md:text-left space-y-10"
             >
@@ -56,7 +56,7 @@ const JoinUsSection = () => {
                     key={w}
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
+                    viewport={{ once: true, amount: 0.1 }}
                     transition={{ duration: 0.4, delay: i * 0.1 }}
                     className="bg-navy text-white font-body font-bold px-8 py-3.5 rounded-2xl text-sm shadow-lg cursor-default border border-white/10"
                   >
@@ -70,7 +70,7 @@ const JoinUsSection = () => {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.6, delay: 0.2 }}
               className="bg-navy rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-white/5 relative group overflow-hidden"
             >

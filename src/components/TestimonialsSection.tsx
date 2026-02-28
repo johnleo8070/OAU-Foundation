@@ -44,14 +44,14 @@ const itemVariants = {
 const TestimonialsSection = () => (
   <section className="py-24 gradient-navy overflow-hidden relative">
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2" />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-md lg:blur-[60px] -translate-y-1/2 translate-x-1/2" />
     </div>
 
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
         initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5 }}
         className="text-center mb-20"
       >
@@ -65,7 +65,7 @@ const TestimonialsSection = () => (
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         className="grid md:grid-cols-3 gap-8"
       >
         {testimonials.map((t) => (
@@ -92,6 +92,8 @@ const TestimonialsSection = () => (
                     <img
                       src={t.image}
                       alt={t.name}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover rounded-full shadow-lg"
                     />
                   ) : (

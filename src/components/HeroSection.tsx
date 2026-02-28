@@ -13,8 +13,8 @@ const HeroSection = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        {/* Decorative background glow - Simplified */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-gold/5 to-navy-light/5 rounded-[2.5rem] blur-lg opacity-25 group-hover:opacity-40 transition duration-700" />
+        {/* Decorative background glow - Optimized for performance */}
+        <div className="absolute -inset-1 bg-gradient-to-r from-gold/5 to-navy-light/5 rounded-[2.5rem] blur-md lg:blur-lg opacity-25 group-hover:opacity-40 transition duration-700" />
 
         <div className="relative space-y-8 text-center md:text-left bg-navy-dark/40 backdrop-blur-md border border-white/5 p-8 md:p-14 rounded-[2.5rem] shadow-xl">
           <div className="space-y-4">
@@ -79,7 +79,9 @@ const HeroSection = () => (
           <img
             src={heroImg}
             alt="Onyekwere Akym Uche in blue suit"
-            className="relative z-10 w-[25rem] md:w-[32rem] lg:w-[40rem] object-contain drop-shadow-2xl translate-y-[20px] md:translate-y-[60px]"
+            loading="eager"
+            decoding="async"
+            className="relative z-10 w-[25rem] md:w-[32rem] lg:w-[40rem] object-contain drop-shadow-xl lg:drop-shadow-2xl translate-y-[20px] md:translate-y-[60px]"
           />
         </div>
       </motion.div>

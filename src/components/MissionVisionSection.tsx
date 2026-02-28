@@ -7,7 +7,7 @@ const MissionVisionSection = () => (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6 }}
         className="rounded-[2rem] p-10 bg-navy-light/20 border border-white/5 text-center space-y-6 shadow-xl group"
       >
@@ -23,7 +23,7 @@ const MissionVisionSection = () => (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, delay: 0.1 }}
         className="rounded-[2rem] p-10 bg-navy-light/20 border border-white/5 text-center space-y-6 shadow-xl group"
       >

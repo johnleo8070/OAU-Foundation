@@ -37,7 +37,7 @@ const FocusAreasSection = () => (
       {[...Array(2)].map((_, i) => (
         <div
           key={i}
-          className="absolute bg-gold/5 rounded-full blur-[60px]"
+          className="absolute bg-gold/5 rounded-full blur-md lg:blur-[60px]"
           style={{
             width: `${300 + i * 100}px`,
             height: `${300 + i * 100}px`,
@@ -52,7 +52,7 @@ const FocusAreasSection = () => (
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         className="mb-16"
       >
         <h2 className="text-4xl sm:text-5xl font-display font-black text-white mb-4">
@@ -65,7 +65,7 @@ const FocusAreasSection = () => (
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
         className="grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
       >
         {areas.map((a) => (
@@ -97,7 +97,7 @@ const FocusAreasSection = () => (
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ delay: 0.4 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, amount: 0.1 }}
       >
         <Link
           to="/foundation"
