@@ -27,9 +27,10 @@ const ValuesSection = () => (
 
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
         className="text-center mb-20"
       >
         <h2 className="text-4xl sm:text-5xl font-display font-black text-navy mb-4">
@@ -43,25 +44,15 @@ const ValuesSection = () => (
           {values.map((v, i) => (
             <motion.div
               key={v.title}
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                delay: i * 0.15
-              }}
-              whileHover={{ x: 10 }}
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: i * 0.1 }}
               className="flex gap-6 group"
             >
-              <motion.div
-                whileHover={{ rotate: 360, scale: 1.1 }}
-                transition={{ duration: 0.8 }}
-                className="flex-shrink-0 w-16 h-16 rounded-2xl gradient-gold flex items-center justify-center shadow-[0_10px_20px_rgba(212,175,55,0.3)] group-hover:shadow-gold/50 transition-all"
-              >
+              <div className="flex-shrink-0 w-16 h-16 rounded-2xl gradient-gold flex items-center justify-center shadow-lg transition-all">
                 <v.icon className="text-navy" size={28} />
-              </motion.div>
+              </div>
               <div className="space-y-2">
                 <h3 className="font-display font-bold text-navy text-xl group-hover:text-gold transition-colors">{v.title}</h3>
                 <p className="text-warm-gray font-body text-base leading-relaxed font-light">{v.desc}</p>
@@ -71,27 +62,20 @@ const ValuesSection = () => (
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.8, x: 100, rotate: 5 }}
-          whileInView={{ opacity: 1, scale: 1, x: 0, rotate: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ type: "spring", stiffness: 50, damping: 15 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
           className="flex justify-center"
         >
-          <motion.div
-            animate={{
-              y: [0, -15, 0],
-              rotate: [0, 1, 0, -1, 0]
-            }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="relative group p-4"
-          >
-            <div className="absolute -inset-2 bg-gold/20 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative group p-4">
+            <div className="absolute -inset-2 bg-gold/10 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <img
               src={aboutImg}
               alt="Onyekwere Akym Uche seated"
               className="relative z-10 rounded-[2.5rem] shadow-2xl w-80 lg:w-96 object-cover border-8 border-white group-hover:scale-[1.02] transition-transform duration-500"
             />
-          </motion.div>
+          </div>
         </motion.div>
       </div>
     </div>

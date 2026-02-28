@@ -8,31 +8,27 @@ const PoliticsSection = () => (
 
     <div className="container mx-auto px-4 grid md:grid-cols-2 gap-16 items-center relative z-10">
       <motion.div
-        initial={{ opacity: 0, scale: 0.7, x: -100, rotate: -10 }}
-        whileInView={{ opacity: 1, scale: 1, x: 0, rotate: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ type: "spring", stiffness: 50, damping: 15 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
         className="flex justify-center"
       >
-        <motion.div
-          animate={{ y: [0, -10, 0] }}
-          transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          className="relative group"
-        >
-          <div className="absolute -inset-4 bg-gold/20 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="relative group">
+          <div className="absolute -inset-4 bg-gold/10 rounded-[2rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
           <img
             src={politicsImg}
             alt="OAU in traditional attire"
             className="relative z-10 rounded-[2rem] shadow-2xl w-80 md:w-96 object-cover border-4 border-white/10 group-hover:scale-[1.02] transition-transform duration-500"
           />
-        </motion.div>
+        </div>
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ type: "spring", stiffness: 50, damping: 20 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
         className="space-y-8 text-center md:text-left"
       >
         <div className="space-y-4">

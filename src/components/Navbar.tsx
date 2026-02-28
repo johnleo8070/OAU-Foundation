@@ -20,15 +20,17 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      // Use a slightly larger threshold to avoid frequent state updates
+      if (window.scrollY > 40 && !scrolled) setScrolled(true);
+      else if (window.scrollY <= 40 && scrolled) setScrolled(false);
     };
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [scrolled]);
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 glass-navy ${scrolled ? "py-1.5 sm:py-2" : "py-4"
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 transform-gpu translate-z-0 ${scrolled ? "py-2 glass-navy shadow-lg" : "py-5 bg-transparent"
         }`}
     >
       <div className="container mx-auto flex items-center justify-between px-4">
@@ -77,7 +79,7 @@ const Navbar = () => {
       </div>
 
       {/* Mobile menu */}
-      <div className={`lg:hidden fixed inset-x-0 top-[64px] bg-navy-dark/95 backdrop-blur-xl transition-all duration-300 ease-in-out border-b border-white/5 overflow-hidden ${open ? "max-h-screen opacity-100 visible" : "max-h-0 opacity-0 invisible"
+      <div className={`lg:hidden fixed inset-x-0 top-[64px] bg-navy-dark/95 backdrop-blur-md transition-all duration-300 ease-in-out border-b border-white/5 overflow-hidden ${open ? "max-h-screen opacity-100 visible" : "max-h-0 opacity-0 invisible"
         }`}>
         <div className="px-4 py-10 space-y-6">
           {navLinks.map((l) => (

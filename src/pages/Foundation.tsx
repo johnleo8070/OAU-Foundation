@@ -56,15 +56,15 @@ const Foundation = () => (
 
           {/* Text Content in Glass Box */}
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="group relative z-20 order-2 lg:order-1"
           >
             {/* Decorative background glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-gold/20 to-navy-light/20 rounded-[2.5rem] blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200" />
+            <div className="absolute -inset-1 bg-gradient-to-r from-gold/10 to-navy-light/10 rounded-[2.5rem] blur opacity-25 group-hover:opacity-40 transition duration-700" />
 
-            <div className="relative space-y-8 text-center lg:text-left bg-navy-dark/40 backdrop-blur-2xl border border-white/10 p-8 md:p-14 rounded-[2.5rem] shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+            <div className="relative space-y-8 text-center lg:text-left bg-navy-dark/60 border border-white/5 p-8 md:p-14 rounded-[2.5rem] shadow-xl">
               <div className="space-y-4">
                 <motion.p
                   initial={{ opacity: 0, y: 10 }}
@@ -97,9 +97,9 @@ const Foundation = () => (
 
           {/* Logo directly on background */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8, x: 50 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             className="order-1 lg:order-2 flex justify-center lg:justify-end"
           >
             <div className="relative group p-4">
@@ -129,8 +129,8 @@ const Foundation = () => (
         {/* Introduction & Principle */}
         <div className="grid lg:grid-cols-12 gap-12 items-start mb-24">
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-8 space-y-6"
           >
@@ -154,8 +154,8 @@ const Foundation = () => (
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-4 bg-navy rounded-[2.5rem] p-10 text-center relative overflow-hidden shadow-2xl group"
           >
@@ -236,8 +236,8 @@ const Foundation = () => (
               {[
                 { label: "Community-focused", color: "bg-navy text-white" },
                 { label: "Impact-driven", color: "bg-gold text-navy" },
-                { label: "Inclusive & Accessible", color: "bg-slate-100 text-navy" },
-                { label: "Sustainable & Scalable", color: "bg-navy-light text-white" }
+                { label: "Inclusive & Accessible", color: "bg-gold text-navy" },
+                { label: "Sustainable & Scalable", color: "bg-navy text-white" }
               ].map((item, idx) => (
                 <div key={item.label} className={`${item.color} p-6 rounded-2xl flex flex-col justify-end min-h-[140px] shadow-lg group/item hover:scale-[1.02] transition-transform`}>
                   <CheckCircle2 className="mb-auto opacity-40 group-hover/item:opacity-100 transition-opacity" size={28} />

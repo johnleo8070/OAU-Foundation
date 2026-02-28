@@ -44,18 +44,15 @@ const itemVariants = {
 const TestimonialsSection = () => (
   <section className="py-24 gradient-navy overflow-hidden relative">
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <motion.div
-        animate={{ rotate: 360 }}
-        transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-        className="absolute -top-1/2 -right-1/4 w-[800px] h-[800px] bg-gold/5 rounded-full blur-[120px]"
-      />
+      <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-gold/5 rounded-full blur-[60px] -translate-y-1/2 translate-x-1/2" />
     </div>
 
     <div className="container mx-auto px-4 relative z-10">
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
+        initial={{ opacity: 0, y: 15 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
         className="text-center mb-20"
       >
         <h2 className="text-4xl sm:text-5xl font-display font-black text-white mb-4">
@@ -68,20 +65,22 @@ const TestimonialsSection = () => (
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
-        className="grid md:grid-cols-3 gap-8 Perspective-[1000px]"
+        viewport={{ once: true }}
+        className="grid md:grid-cols-3 gap-8"
       >
         {testimonials.map((t) => (
           <motion.div
             key={t.name}
-            variants={itemVariants}
-            whileHover={{
-              y: -15,
-              rotateY: 5,
-              rotateX: -5,
-              boxShadow: "0 25px 50px rgba(0,0,0,0.5)"
+            variants={{
+              hidden: { opacity: 0, y: 15 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.4 }
+              }
             }}
-            className="bg-navy-dark/40 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-8 space-y-6 hover:border-gold/30 transition-all shadow-2xl relative group overflow-hidden"
+            whileHover={{ y: -5 }}
+            className="bg-navy-dark/60 border border-white/5 rounded-[2rem] p-8 space-y-6 hover:border-gold/30 transition-all shadow-xl relative group overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-full blur-2xl -translate-y-1/2 translate-x-1/2 group-hover:bg-gold/10 transition-colors" />
 

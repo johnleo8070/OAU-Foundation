@@ -55,16 +55,16 @@ const FoundationSection = () => (
     <div className="container mx-auto px-4 relative z-10">
       {/* Intro */}
       <motion.div
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-100px" }}
-        transition={{ type: "spring", stiffness: 50, damping: 20 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
         className="max-w-4xl mx-auto text-center mb-20 space-y-6"
       >
         <motion.img
-          initial={{ scale: 0, rotate: -10 }}
-          whileInView={{ scale: 1, rotate: 0 }}
-          transition={{ type: "spring", stiffness: 100, damping: 15 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
           src={logo}
           alt="OAU Foundation Logo"
           className="h-28 mx-auto mb-6 drop-shadow-xl"
@@ -83,23 +83,27 @@ const FoundationSection = () => (
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-50px" }}
-        className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 Perspective-[1000px]"
+        viewport={{ once: true }}
+        className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8"
       >
         {pillars.map((p) => (
           <motion.div
             key={p.title}
-            variants={itemVariants}
-            whileHover={{ y: -15, rotateY: 5, rotateX: -5 }}
+            variants={{
+              hidden: { opacity: 0, y: 15 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.4 }
+              }
+            }}
+            whileHover={{ y: -5 }}
             className="bg-white rounded-[1.5rem] p-8 shadow-xl hover:shadow-2xl transition-all border-t-8 border-navy group relative overflow-hidden"
           >
             <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-navy/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <motion.div
-              whileHover={{ scale: 1.2, rotate: 10 }}
-              className="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors"
-            >
+            <div className="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
               <p.icon className="text-gold" size={32} />
-            </motion.div>
+            </div>
             <h3 className="font-display font-bold text-navy text-xl mb-4 group-hover:text-gold transition-colors">{p.title}</h3>
             <p className="text-warm-gray font-body text-sm leading-relaxed opacity-80">{p.desc}</p>
           </motion.div>

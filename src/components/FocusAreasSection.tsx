@@ -32,26 +32,17 @@ const itemVariants = {
 
 const FocusAreasSection = () => (
   <section id="focus" className="py-24 gradient-navy relative overflow-hidden">
-    {/* Floating background particles */}
+    {/* Floating background particles - Minimalist for performance */}
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {[...Array(6)].map((_, i) => (
-        <motion.div
+      {[...Array(2)].map((_, i) => (
+        <div
           key={i}
-          animate={{
-            y: [0, -40, 0],
-            opacity: [0.1, 0.3, 0.1],
-          }}
-          transition={{
-            duration: 5 + i,
-            repeat: Infinity,
-            delay: i * 0.5,
-          }}
-          className="absolute bg-gold rounded-full blur-2xl"
+          className="absolute bg-gold/5 rounded-full blur-[60px]"
           style={{
-            width: `${Math.random() * 100 + 50}px`,
-            height: `${Math.random() * 100 + 50}px`,
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            width: `${300 + i * 100}px`,
+            height: `${300 + i * 100}px`,
+            left: `${20 + i * 40}%`,
+            top: `${30}%`,
           }}
         />
       ))}
@@ -59,7 +50,7 @@ const FocusAreasSection = () => (
 
     <div className="container mx-auto px-4 text-center relative z-10">
       <motion.div
-        initial={{ opacity: 0, y: -30 }}
+        initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         className="mb-16"
@@ -74,47 +65,45 @@ const FocusAreasSection = () => (
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        viewport={{ once: true }}
         className="grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
       >
         {areas.map((a) => (
           <motion.div
             key={a.label}
-            variants={itemVariants}
-            whileHover={{
-              scale: 1.05,
-              rotateY: 10,
-              rotateX: -5,
-              boxShadow: "0 20px 40px rgba(0,0,0,0.4)"
+            variants={{
+              hidden: { opacity: 0, y: 15 },
+              visible: {
+                opacity: 1,
+                y: 0,
+                transition: { duration: 0.4 }
+              }
             }}
-            className="flex flex-col items-center gap-6 bg-white/5 backdrop-blur-xl rounded-[2rem] p-10 border border-white/10 hover:border-gold/40 transition-all group cursor-default shadow-2xl Perspective-[1000px]"
+            whileHover={{
+              y: -5,
+              transition: { duration: 0.2 }
+            }}
+            className="flex flex-col items-center gap-6 bg-navy-light/20 rounded-[2rem] p-8 md:p-10 border border-white/5 hover:border-gold/30 transition-all group cursor-default shadow-lg"
           >
-            <motion.div
-              animate={{ y: [0, -5, 0] }}
-              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
-              className="w-16 h-16 bg-gold/10 rounded-2xl flex items-center justify-center group-hover:bg-gold/20 transition-colors"
-            >
-              <a.icon className="text-gold" size={32} />
-            </motion.div>
+            <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-gold mb-2 group-hover:bg-gold/10 transition-colors">
+              <a.icon size={32} />
+            </div>
             <span className="text-white font-display font-bold text-lg tracking-wide uppercase">{a.label}</span>
           </motion.div>
         ))}
       </motion.div>
 
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        transition={{ delay: 0.6, type: "spring" }}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
         viewport={{ once: true }}
       >
         <Link
           to="/foundation"
-          className="relative inline-block mt-16 group/btn overflow-hidden gradient-gold text-navy font-body font-bold uppercase tracking-widest px-12 py-4 rounded-xl shadow-2xl hover:shadow-gold/40 transition-all font-bold"
+          className="relative inline-block mt-16 group/btn overflow-hidden gradient-gold text-navy font-body font-bold uppercase tracking-widest px-12 py-4 rounded-xl shadow-2xl hover:shadow-gold/40 transition-all"
         >
           <span className="relative z-10">Explore Our Impact</span>
-          <motion.div
-            className="absolute inset-0 bg-white/30 translate-x-[-100%] group-hover/btn:translate-x-[100%] transition-transform duration-700"
-          />
         </Link>
       </motion.div>
     </div>
