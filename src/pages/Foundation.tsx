@@ -3,7 +3,9 @@ import Footer from "@/components/Footer";
 import JoinUsSection from "@/components/JoinUsSection";
 import { BookOpen, HeartPulse, TrendingUp, HandHelping, Target, Eye, Handshake, ShieldCheck, Users, Lightbulb, HeartHandshake, Sparkles, CheckCircle2, Quote } from "lucide-react";
 import logo from "@/assets/logo.png";
+import aboutImg from "@/assets/about-founder.jpeg";
 import { motion } from "framer-motion";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const coreValues = [
   {
@@ -44,76 +46,96 @@ const itemVariants = {
 const Foundation = () => (
   <div className="min-h-screen overflow-hidden">
     <Navbar />
+    <ScrollToTop />
 
-    {/* Hero */}
-    <section className="pt-32 pb-24 gradient-navy relative overflow-hidden">
-      {/* Decorative Background Glows */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-navy-light/10 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+    {/* --- PREMIUM HERO SECTION --- */}
+    <section className="relative min-h-[90vh] flex items-center pt-28 pb-20 lg:pb-0 overflow-hidden bg-navy">
+      {/* Cinematic Background Layer */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-navy/60 via-navy to-navy z-10" />
+        <div className="absolute top-0 right-0 w-[300px] lg:w-[600px] h-[300px] lg:h-[600px] bg-gold/10 rounded-full blur-[60px] lg:blur-[120px] -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-[250px] lg:w-[500px] h-[250px] lg:h-[500px] bg-navy-light/10 rounded-full blur-[50px] lg:blur-[100px] translate-y-1/2 -translate-x-1/2" />
+      </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 relative z-20">
+        <div className="grid lg:grid-cols-12 gap-12 items-center">
 
-          {/* Text Content in Glass Box */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="group relative z-20 order-2 lg:order-1"
-          >
-            {/* Decorative background glow */}
-            <div className="absolute -inset-1 bg-gradient-to-r from-gold/10 to-navy-light/10 rounded-[2.5rem] blur opacity-25 group-hover:opacity-40 transition duration-700" />
-
-            <div className="relative space-y-8 text-center lg:text-left bg-navy-dark/60 border border-white/5 p-8 md:p-14 rounded-[2.5rem] shadow-xl">
-              <div className="space-y-4">
-                <motion.p
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2, duration: 0.5 }}
-                  className="text-gold font-body font-bold tracking-[0.3em] uppercase text-xs sm:text-sm"
-                >
-                  Humanitarian · NGO · Development
-                </motion.p>
-                <motion.h1
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4, duration: 0.6 }}
-                  className="text-4xl sm:text-5xl lg:text-6xl font-display font-black text-white leading-tight"
-                >
-                  THE OAU<br /><span className="text-gold-light">FOUNDATION</span>
-                </motion.h1>
+          {/* Editorial Content Box */}
+          <div className="lg:col-span-7 space-y-8 order-2 lg:order-1">
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-6 lg:space-y-8 text-center lg:text-left"
+            >
+              <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full bg-gold/10 border border-gold/20 text-gold-light text-[10px] lg:text-xs font-black tracking-[0.3em] uppercase mx-auto lg:mx-0">
+                <Sparkles size={14} className="animate-pulse" />
+                The Core of Our Mission
               </div>
 
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                className="text-gold-light/80 font-body text-lg leading-relaxed max-w-xl mx-auto lg:mx-0 font-light"
-              >
-                A humanitarian non-governmental organization dedicated to improving lives. Inspired by the principles of <span className="text-gold font-semibold uppercase">Onyekwere Akym Uche</span>, we work tirelessly to promote sustainable development and alleviate poverty.
-              </motion.p>
-            </div>
-          </motion.div>
+              <h1 className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-display font-black text-white leading-[0.9] tracking-tighter">
+                THE OAU <br />
+                <span className="text-gold-light italic">FOUNDATION</span>
+              </h1>
 
-          {/* Logo directly on background */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="order-1 lg:order-2 flex justify-center lg:justify-end"
-          >
-            <div className="relative group p-4">
-              {/* Dynamic glow effect behind logo only */}
-              <div className="absolute inset-0 bg-gold/10 rounded-full blur-[80px] opacity-0 group-hover:opacity-100 transition duration-700 pointer-events-none" />
+              <p className="text-gold-light/60 font-body text-base lg:text-2xl font-light leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                A humanitarian non-governmental organization dedicated to improving lives through sustainable development, emergency response, and advocacy.
+              </p>
 
-              <motion.img
-                whileHover={{ scale: 1.05, rotate: 2 }}
-                src={logo}
-                alt="OAU Foundation Logo"
-                className="relative z-10 w-64 md:w-80 lg:w-[480px] h-auto object-contain drop-shadow-[0_20px_50px_rgba(0,0,0,0.5)]"
-              />
-            </div>
-          </motion.div>
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 lg:gap-6 pt-4 mb-10 lg:mb-0">
+                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 lg:px-6 py-3 lg:py-4 rounded-2xl border border-white/10 shadow-lg group">
+                  <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
+                    <Users size={18} className="text-gold group-hover:scale-110 transition-transform" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-white font-display font-black text-lg leading-none">100%</p>
+                    <p className="text-[9px] font-body font-bold text-white/40 uppercase tracking-widest mt-1">Committed</p>
+                  </div>
+                </div>
+                <div className="flex items-center gap-3 bg-white/5 backdrop-blur-md px-4 lg:px-6 py-3 lg:py-4 rounded-2xl border border-white/10 shadow-lg group">
+                  <div className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center">
+                    <ShieldCheck size={18} className="text-gold group-hover:scale-110 transition-transform" />
+                  </div>
+                  <div className="text-left">
+                    <p className="text-white font-display font-black text-lg leading-none">Global</p>
+                    <p className="text-[9px] font-body font-bold text-white/40 uppercase tracking-widest mt-1">Standards</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Premium Image Presentation */}
+          <div className="lg:col-span-5 flex justify-center lg:justify-end mt-4 lg:mt-0 mb-12 lg:mb-0 relative order-1 lg:order-2">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, y: 30 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+              className="relative"
+            >
+              <div className="absolute -inset-4 border border-gold/20 rounded-[3rem] -z-10" />
+              <div className="absolute -inset-8 border border-gold/10 rounded-[4rem] -z-20 hidden md:block" />
+
+              <div className="relative z-10 rounded-[2.5rem] overflow-hidden shadow-[0_50px_100px_-20px_rgba(0,0,0,0.6)] border-4 border-white/5 max-w-[420px]">
+                <img
+                  src={aboutImg}
+                  alt="OAU Foundation Leadership"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-auto object-cover scale-[1.02]"
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-8 glass-navy border-t border-white/10">
+                  <div className="flex items-center gap-4">
+                    <img src={logo} alt="Logo" className="w-10 h-10 object-contain drop-shadow-md" />
+                    <div>
+                      <p className="font-display font-bold text-white text-lg">Foundation Hub</p>
+                      <p className="font-body text-gold/80 text-[10px] font-bold tracking-widest uppercase">Empowering Communities</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </div>
 
         </div>
       </div>
