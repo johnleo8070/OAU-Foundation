@@ -1,18 +1,42 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { LucideIcon, ArrowRight, Loader2, CheckCircle2, Users, Handshake, Heart, Sparkles, Target } from "lucide-react";
 import { useState } from "react";
-import { Users, Handshake, Heart, Sparkles, Target } from "lucide-react";
 import { motion } from "framer-motion";
+import { sendEmail } from "@/utils/api";
 import aboutImg from "@/assets/about-founder.jpeg";
 import ScrollToTop from "@/components/ScrollToTop";
 
 const FormCard = ({ title, icon: Icon, fields, delay }: { title: string; icon: React.ElementType; fields: string[]; delay: number }) => {
   const [form, setForm] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert(`${title} form submitted! We'll be in touch.`);
-    setForm({});
+    setStatus("loading");
+
+    const result = await sendEmail("quotation", {
+      name: form["Full Name"] || form["Contact Person"] || form["Name"] || "Anonymous",
+      email: form["Email"],
+      phone: form["Phone"] || "N/A",
+      service: title,
+      message: Object.entries(form)
+        .filter(([key]) => !["Full Name", "Contact Person", "Name", "Email", "Phone"].includes(key))
+        .map(([key, value]) => `${key}: ${value}`)
+        .join("\n")
+    });
+
+    if (result.success) {
+      setStatus("success");
+      setTimeout(() => {
+        setForm({});
+        setStatus("idle");
+      }, 3000);
+    } else {
+      setStatus("error");
+      alert(result.message);
+      setStatus("idle");
+    }
   };
 
   return (
@@ -59,10 +83,27 @@ const FormCard = ({ title, icon: Icon, fields, delay }: { title: string; icon: R
         <motion.button
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
+          disabled={status === "loading"}
           type="submit"
-          className="bg-navy text-white font-display font-black text-xs uppercase tracking-[0.2em] px-8 py-5 rounded-2xl hover:bg-gold hover:text-navy hover:shadow-2xl transition-all w-full mt-10"
+          className={`w-full py-5 rounded-2xl font-display font-black uppercase tracking-[0.2em] text-xs transition-all flex items-center justify-center gap-3 shadow-xl ${status === "success" ? "bg-green-500 text-white" : "bg-navy text-white hover:bg-gold hover:text-navy"
+            }`}
         >
-          Submit Application
+          {status === "loading" ? (
+            <>
+              <Loader2 className="w-5 h-5 animate-spin" />
+              Processing...
+            </>
+          ) : status === "success" ? (
+            <>
+              <CheckCircle2 className="w-5 h-5" />
+              Submitted Successfully
+            </>
+          ) : (
+            <>
+              {title.toUpperCase()} NOW
+              <ArrowRight size={18} />
+            </>
+          )}
         </motion.button>
       </form>
     </motion.div>

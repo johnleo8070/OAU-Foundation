@@ -1,16 +1,34 @@
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { sendEmail } from "@/utils/api";
+import { Loader2, CheckCircle2, ShieldAlert } from "lucide-react";
 
 const words = ["Compassionate", "Charitable", "Socially Concerned"];
 
 const JoinUsSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Thank you for joining us! We'll be in touch.");
-    setForm({ name: "", email: "", message: "" });
+    setStatus("loading");
+
+    const result = await sendEmail("contact", {
+      name: form.name,
+      email: form.email,
+      subject: "New Member/Volunteer Interest",
+      message: form.message
+    });
+
+    if (result.success) {
+      setStatus("success");
+      setForm({ name: "", email: "", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    } else {
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 5000);
+    }
   };
 
   return (
@@ -119,13 +137,48 @@ const JoinUsSection = () => {
                     placeholder="Tell us how you'd like to help..."
                   />
                 </div>
+                <AnimatePresence mode="wait">
+                  {status !== "idle" && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      className={`p-4 rounded-xl text-xs font-body font-medium flex items-center gap-3 ${status === "success" ? "bg-green-500/10 text-green-400 border border-green-500/20" :
+                        status === "error" ? "bg-red-500/10 text-red-400 border border-red-500/20" :
+                          "bg-gold/10 text-gold border border-gold/20"
+                        }`}
+                    >
+                      {status === "loading" && <Loader2 className="w-4 h-4 animate-spin" />}
+                      {status === "success" && <CheckCircle2 className="w-4 h-4" />}
+                      {status === "error" && <ShieldAlert className="w-4 h-4" />}
+                      {status === "loading" ? "Processing your request..." :
+                        status === "success" ? "Thank you for joining our mission!" :
+                          "Failed to send. Please try again."}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
                 <motion.button
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.98 }}
+                  disabled={status === "loading"}
                   type="submit"
-                  className="gradient-gold text-navy font-display font-black uppercase tracking-widest px-10 py-5 rounded-2xl w-full shadow-lg transition-all mt-6"
+                  className={`gradient-gold text-navy font-display font-black uppercase tracking-widest px-10 py-5 rounded-2xl w-full shadow-lg transition-all mt-6 flex items-center justify-center gap-3 ${status === "success" ? "opacity-50 cursor-default" : ""
+                    }`}
                 >
-                  Send Message
+                  {status === "loading" ? (
+                    <>
+                      <Loader2 className="w-5 h-5 animate-spin" />
+                      Joining...
+                    </>
+                  ) : status === "success" ? (
+                    <>
+                      <CheckCircle2 className="w-5 h-5" />
+                      Welcome Aboard!
+                    </>
+                  ) : (
+                    "Send Message"
+                  )}
                 </motion.button>
               </form>
             </motion.div>

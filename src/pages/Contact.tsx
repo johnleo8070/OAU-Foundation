@@ -1,17 +1,37 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, MessageSquare, Clock, Globe } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Twitter, Instagram, Linkedin, MessageSquare, Clock, Globe, Send, Loader2, CheckCircle2, ShieldAlert } from "lucide-react";
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import aboutImg from "@/assets/about-founder.jpeg";
+import { sendEmail } from "@/utils/api";
 
 const Contact = () => {
-  const [form, setForm] = useState({ firstName: "", lastName: "", phone: "", email: "", message: "" });
+  const [form, setForm] = useState({ firstName: "", lastName: "", phone: "", email: "", subject: "General Inquiry", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [statusMsg, setStatusMsg] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Message sent! We'll get back to you soon.");
-    setForm({ firstName: "", lastName: "", phone: "", email: "", message: "" });
+    setStatus("loading");
+
+    const result = await sendEmail("contact", {
+      name: `${form.firstName} ${form.lastName}`,
+      email: form.email,
+      subject: form.subject,
+      message: `Phone: ${form.phone}\n\n${form.message}`
+    });
+
+    if (result.success) {
+      setStatus("success");
+      setStatusMsg("Message sent! We'll get back to you soon.");
+      setForm({ firstName: "", lastName: "", phone: "", email: "", subject: "General Inquiry", message: "" });
+      setTimeout(() => setStatus("idle"), 5000);
+    } else {
+      setStatus("error");
+      setStatusMsg(result.message);
+      setTimeout(() => setStatus("idle"), 5000);
+    }
   };
 
   const socialIcons = [Facebook, Twitter, Instagram, Linkedin];
@@ -161,6 +181,20 @@ const Contact = () => {
                 />
               </div>
               <div>
+                <label className="block font-body text-sm font-medium text-navy mb-1">Subject</label>
+                <select
+                  value={form.subject}
+                  onChange={(e) => setForm({ ...form, subject: e.target.value })}
+                  className="w-full border border-border rounded-md px-3 py-2 font-body text-sm focus:outline-none focus:ring-2 focus:ring-ring transition-all bg-white"
+                >
+                  <option>General Inquiry</option>
+                  <option>Partnership</option>
+                  <option>Donation</option>
+                  <option>Media Inquiry</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div>
                 <label className="block font-body text-sm font-medium text-navy mb-1">Message</label>
                 <textarea
                   required
@@ -171,13 +205,50 @@ const Contact = () => {
                   className="w-full border border-border rounded-md px-3 py-2 font-body text-sm focus:outline-none focus:ring-2 focus:ring-ring resize-none transition-all"
                 />
               </div>
+
+              <AnimatePresence mode="wait">
+                {status !== "idle" && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    className={`p-4 rounded-xl text-sm font-body font-medium flex items-center gap-3 ${status === "success" ? "bg-green-50 text-green-700 border border-green-100" :
+                      status === "error" ? "bg-red-50 text-red-700 border border-red-100" :
+                        "bg-gold/10 text-navy border border-gold/20"
+                      }`}
+                  >
+                    {status === "loading" && <Loader2 className="w-4 h-4 animate-spin" />}
+                    {status === "success" && <CheckCircle2 className="w-4 h-4" />}
+                    {status === "error" && <ShieldAlert className="w-4 h-4" />}
+                    {statusMsg || (status === "loading" ? "Sending your message..." : "")}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
               <motion.button
+                type="submit"
+                disabled={status === "loading"}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                type="submit"
-                className="gradient-gold text-navy font-body font-semibold px-8 py-3 rounded-md hover:opacity-90 transition-all w-full shadow-lg"
+                className={`w-full py-4 rounded-xl font-body font-black uppercase tracking-widest text-sm transition-all flex items-center justify-center gap-3 shadow-lg ${status === "success" ? "bg-green-500 text-white" : "bg-navy text-white hover:bg-gold hover:text-navy"
+                  }`}
               >
-                Send
+                {status === "loading" ? (
+                  <>
+                    <Loader2 className="w-5 h-5 animate-spin" />
+                    Sending...
+                  </>
+                ) : status === "success" ? (
+                  <>
+                    <CheckCircle2 className="w-5 h-5" />
+                    Sent Successfully
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-5 h-5" />
+                    Send Message
+                  </>
+                )}
               </motion.button>
             </form>
           </motion.div>
