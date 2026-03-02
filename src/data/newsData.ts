@@ -8,6 +8,17 @@ import works12 from "@/assets/ourWorks-12.jpg";
 import news7Before from "@/assets/news-7-before.jpg";
 import news7After from "@/assets/news-7-after.jpg";
 import sportsDonation from "@/assets/sports-donation.png";
+import badGovernance from "@/assets/bad-governance.jpg";
+import news2Img from "@/assets/news2.jpg";
+import news3Img from "@/assets/news3.jpg";
+import news4Img from "@/assets/news4.jpg";
+import news5Img from "@/assets/news5.jpg";
+import news6Img from "@/assets/news6.jpg";
+
+
+
+
+
 
 export interface NewsArticle {
     id: string;
@@ -69,7 +80,8 @@ export const newsArticles: NewsArticle[] = [
         id: "1",
         title: "Breaking the Chains of Bad Governance: A Call for Ethical Political Reform — Onyekwere Akym Uche (OAU)",
         date: "March 1, 2026",
-        image: works1,
+        image: badGovernance,
+
         content: [
             "Nigeria stands at a defining moment in its national journey. Rich in culture, blessed with abundant natural resources, and powered by one of the most energetic youth populations in the world, the country should be a beacon of progress on the African continent. Yet the persistent weight of bad governance continues to suppress its vast potential. Corruption, electoral malpractice, weak institutions, and leadership driven by personal ambition rather than public service have created a cycle that undermines trust and slows development. Breaking these chains requires more than rhetoric. It demands ethical political reform anchored in integrity, accountability, and a renewed sense of national purpose.",
             "Bad governance is not merely a political failure. It is a human tragedy. It is seen in overcrowded classrooms where children struggle to learn without adequate resources. It is felt in hospitals where basic equipment is lacking. It is experienced by graduates who wander the streets in search of employment that does not exist. When leadership fails, ordinary citizens pay the price. The consequences extend beyond statistics and economic indicators. They shape the daily realities of families who dream of better opportunities yet remain constrained by systems that prioritize the few over the many.",
@@ -84,7 +96,8 @@ export const newsArticles: NewsArticle[] = [
         id: "2",
         title: "YOUR PVC IS YOUR BRAGGING RIGHT, GET YOURS TODAY",
         date: "February 28, 2026",
-        image: works7,
+        image: news2Img,
+
         content: [
             "The ongoing Continuous Voter Registration exercise provides a vital opportunity for every eligible citizen to actively participate in shaping the future of our nation.",
             "If you are a first-time voter, need to update your registration details, or have not yet collected your Permanent Voter Card (PVC), this is the appropriate time to take action.",
@@ -97,7 +110,8 @@ export const newsArticles: NewsArticle[] = [
         id: "3",
         title: "Will Nigeria Choose Transparency or Repeat 2023's Electoral Criminality? — By Onyekwere Akym Uche (OAU)",
         date: "February 25, 2026",
-        image: works8,
+        image: news3Img,
+
         content: [
             "As Nigeria gradually approaches the 2027 general elections, the nation stands at a defining crossroads. The memories of the 2023 electoral process remain vivid in the minds of millions of citizens who watched with hope, only to be confronted by controversy, confusion, and widespread allegations of manipulation. Elections are the lifeblood of any democracy. When their credibility is questioned, the legitimacy of governance itself is weakened. The pressing question before Nigeria today is whether it will embrace transparency and reform, or whether it will once again descend into the troubling patterns that stained its last national exercise.",
             "The controversy surrounding the failure to entrench mandatory electronic transmission of election results has reignited fears of systemic regression. Electronic transmission is not a luxury innovation but a fundamental safeguard designed to protect the sanctity of the ballot. It minimizes human interference, reduces opportunities for tampering, and strengthens public confidence in outcomes. By resisting such a reform, lawmakers risk sending a dangerous signal that opacity remains preferable to accountability. A democracy cannot thrive where transparency is treated as optional.",
@@ -112,8 +126,9 @@ export const newsArticles: NewsArticle[] = [
         id: "4",
         title: "Onyekwere Akym Uche Slams Airlines Over Rising Flight Costs, Says Nigerians Facing Undue Hardship",
         date: "February 20, 2026",
-        image: works9,
+        image: news4Img,
         content: [
+
             "Former Abia State governorship candidate and founder of the OAU foundation, Hon Onyekwere Akym Uche (OAU), has strongly condemned the high cost of domestic flights this Yuletide season, describing the surge as a source of unnecessary hardship for millions of Nigerians striving to reunite with their families.",
             "In a statement issued to the press, Akym expressed deep concern over what he termed “exploitative pricing” by airlines, particularly during peak travel periods such as Christmas and New Year.",
             "He noted that the unprecedented hike in ticket prices has placed an enormous financial burden on ordinary citizens.",
@@ -132,8 +147,9 @@ export const newsArticles: NewsArticle[] = [
         id: "5",
         title: "Put Nigerians First, OAU Advises Leaders, Emphasising Compassion and Inclusion",
         date: "February 15, 2026",
-        image: works11,
+        image: news5Img,
         content: [
+
             "In a strong call for ethical and people-centered governance, Former Abia State governorship candidate and founder of the OAU foundation, Hon Onyekwere Akym Uche (OAU), has urged Nigerian leaders to place the welfare of citizens at the forefront of their decision-making.",
             "In a statement made available to newsmen, OAU highlighted the need for compassion, integrity, and inclusion as the foundation of effective governance in Nigeria.",
             "According to Onyekwere Akym Uche, “Leadership is meaningful only when it uplifts communities, strengthens institutions, and offers hope to the people. Any administration that ignores the needs of its citizens is failing in its primary responsibility.”",
@@ -152,8 +168,9 @@ export const newsArticles: NewsArticle[] = [
         id: "6",
         title: "SENATORIAL AMBITION OF AKYM ONYEKWERE GAINS MORE MOMENTUM AS SOME GROUP VISITED HIS RESIDENCE FOR ENDORSEMENT.",
         date: "February 10, 2026",
-        image: works12,
+        image: news6Img,
         content: [
+
             "The senatorial ambition of Onyekwere Akym Uche has continued to gather remarkable momentum as various groups across Abia North declare their support for his aspiration. In a significant show of solidarity, a delegation of youths from different local government areas of the district paid an unscheduled visit to his residence in the early hours of today. Their presence was described as a bold statement of endorsement and confidence in his leadership capacity to transform Abia North district as he has shown consistent compassion in using his private resources to assist the masses.The atmosphere was charged with enthusiasm as the group expressed optimism and confidence on the future of the senatorial district. The visit further underscored the growing grassroots acceptability of his ambition. It also reflected the increasing desire among the people for purposeful representation that is built on values.",
             "The youths stated clearly that their mission was to publicly identify with Akym and lend their voices to his aspiration for the Abia North Senate seat. According to them, the region has experienced years of underdevelopment, backwardness, Poor representation and neglect. They lamented the persistent infrastructural decay affecting many communities in the zone.Unemployment and youth restiveness were also highlighted as major concerns. The group insisted that urgent intervention is needed to redirect the zone toward growth. They expressed confidence that Akym possesses the vision to change the narrative for good.",
             "Speaking during the visit, representatives of the group emphasized that their endorsement was not influenced by mere political sentiments. They explained that their decision was based on Akym’s long standing philanthropic engagements, public trust, Leadership qualities, doggedness, peaceful disposition etc. Over the years, he has consistently demonstrated compassion for the less privileged. His humanitarian gestures, they said, have touched countless families , clans , Local Government, States etc.These actions have earned him widespread admiration across the district and state at large. For them, leadership must be built on proven character and service to the people.",

@@ -5,13 +5,31 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { motion } from "framer-motion";
 import { Calendar, User, Clock, Share2, ArrowLeft, ArrowRight, ChevronRight, Bookmark, Activity } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { toast } from "sonner";
+import { Check, Copy } from "lucide-react";
+
 
 const NewsDetail = () => {
     const { id } = useParams();
     const article = newsArticles.find((a) => a.id === id);
     const otherNews = newsArticles.filter((a) => a.id !== id).slice(0, 5);
     const heroRef = useRef(null);
+
+    const handleShare = () => {
+        const url = window.location.href;
+        navigator.clipboard.writeText(url).then(() => {
+            toast.success("Link copied to clipboard!", {
+                icon: <Check className="w-4 h-4 text-green-500" />,
+                description: "You can now share this article.",
+                className: "bg-white border-2 border-gold/20 rounded-2xl font-body font-bold text-navy shadow-2xl",
+            });
+        }).catch((err) => {
+            console.error("Could not copy text: ", err);
+            toast.error("Failed to copy link");
+        });
+    };
+
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -240,12 +258,20 @@ const NewsDetail = () => {
                                 <div className="flex items-center gap-6">
                                     <span className="text-navy font-black text-xs uppercase tracking-widest">Spread the Word</span>
                                     <div className="flex gap-3">
-                                        {[Share2, Activity, Bookmark].map((Icon, i) => (
+                                        <button
+                                            onClick={handleShare}
+                                            className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-navy hover:bg-gold hover:text-white transition-all hover:-translate-y-1 shadow-sm group/share"
+                                            title="Copy Link"
+                                        >
+                                            <Share2 size={18} className="group-hover/share:scale-110 transition-transform" />
+                                        </button>
+                                        {[Activity, Bookmark].map((Icon, i) => (
                                             <button key={i} className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-navy hover:bg-gold hover:text-white transition-all hover:-translate-y-1 shadow-sm">
                                                 <Icon size={18} />
                                             </button>
                                         ))}
                                     </div>
+
                                 </div>
                                 <Link to="/news" className="group flex items-center gap-3 text-gold font-body font-black text-xs uppercase tracking-widest">
                                     Back to news <ArrowRight size={16} className="group-hover:translate-x-2 transition-transform" />
