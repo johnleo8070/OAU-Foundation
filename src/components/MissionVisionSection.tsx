@@ -9,9 +9,9 @@ const MissionVisionSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6 }}
-        className="rounded-[2rem] p-10 bg-navy-light/20 border border-white/5 text-center space-y-6 shadow-xl group"
+        className="rounded-[2rem] p-10 bg-navy border border-white/5 text-center space-y-6 shadow-xl group"
       >
-        <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
+        <div className="w-16 h-16 bg-navy rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
           <Target className="text-gold" size={32} />
         </div>
         <h3 className="text-3xl font-display font-bold text-white">Our Mission</h3>
@@ -25,9 +25,9 @@ const MissionVisionSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.6, delay: 0.1 }}
-        className="rounded-[2rem] p-10 bg-navy-light/20 border border-white/5 text-center space-y-6 shadow-xl group"
+        className="rounded-[2rem] p-10 bg-navy border border-white/5 text-center space-y-6 shadow-xl group"
       >
-        <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
+        <div className="w-16 h-16 bg-navy rounded-2xl flex items-center justify-center mx-auto mb-6 group-hover:bg-gold/10 transition-colors">
           <Eye className="text-gold" size={32} />
         </div>
         <h3 className="text-3xl font-display font-bold text-white">Our Vision</h3>

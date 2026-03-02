@@ -22,6 +22,10 @@ const Footer = () => (
               <Phone className="text-gold shrink-0" size={18} />
               <p className="text-sm font-body">09035269615</p>
             </div>
+            <div className="flex items-center gap-3">
+              <Mail className="text-gold shrink-0" size={18} />
+              <p className="text-sm font-body break-all">info@onyekwereakymuche.com</p>
+            </div>
           </div>
         </div>
 
