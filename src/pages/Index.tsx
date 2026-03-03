@@ -38,7 +38,7 @@ const Index = () => (
               delay: 0.1
             }}
             whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-2xl transition-all group relative overflow-hidden"
+            className="bg-white rounded-3xl lg:rounded-[2.5rem] p-6 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-2xl transition-all group relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-40 h-40 bg-navy/5 rounded-full translate-x-1/2 -translate-y-1/2 transition-transform duration-700 group-hover:scale-150" />
 
@@ -47,11 +47,11 @@ const Index = () => (
             </div>
 
             <div className="space-y-6 relative z-10">
-              <h3 className="text-3xl font-display font-black text-navy leading-tight">The Visionary</h3>
-              <p className="text-warm-gray font-body text-xl leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+              <h3 className="text-2xl lg:text-3xl font-display font-black text-navy leading-tight">The Visionary</h3>
+              <p className="text-warm-gray font-body text-lg lg:text-xl leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                 Onyekwere Akym Uche is a Nigerian entrepreneur, humanitarian, and politician, renowned for his transformative leadership in Abia State.
               </p>
-              <p className="text-warm-gray font-body text-xl leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+              <p className="text-warm-gray font-body text-lg lg:text-xl leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                 He is the founder of <span className="font-semibold text-gold">THE OAU FOUNDATION</span>, a catalyst for social change and community empowerment.
               </p>
 
@@ -74,7 +74,7 @@ const Index = () => (
               delay: 0.2
             }}
             whileHover={{ y: -10, transition: { duration: 0.3 } }}
-            className="bg-white rounded-[2.5rem] p-8 md:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-2xl transition-all group relative overflow-hidden"
+            className="bg-white rounded-3xl lg:rounded-[2.5rem] p-6 lg:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.05)] border border-gray-100 hover:shadow-2xl transition-all group relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 w-40 h-40 bg-gold/5 rounded-full translate-x-1/2 -translate-y-1/2 transition-transform duration-700 group-hover:scale-150" />
 
@@ -83,11 +83,11 @@ const Index = () => (
             </div>
 
             <div className="space-y-6 relative z-10">
-              <h3 className="text-3xl font-display font-black text-navy leading-tight">The Mission</h3>
-              <p className="text-warm-gray font-body text-xl leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+              <h3 className="text-2xl lg:text-3xl font-display font-black text-navy leading-tight">The Mission</h3>
+              <p className="text-warm-gray font-body text-lg lg:text-xl leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                 The OAU Foundation is a global force for good, dedicated to rewriting the stories of underserved communities through innovative intervention.
               </p>
-              <p className="text-warm-gray font-body text-xl leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
+              <p className="text-warm-gray font-body text-lg lg:text-xl leading-relaxed opacity-80 group-hover:opacity-100 transition-opacity">
                 Our tireless commitment to sustainable development and poverty alleviation fuels progress across the nation.
               </p>
 

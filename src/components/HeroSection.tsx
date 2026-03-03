@@ -35,19 +35,19 @@ const HeroSection = () => {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-20 items-center md:items-end relative z-10 h-full left-[-12px]">
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-20 items-center md:items-end relative z-10 h-full left-[-1px]">
 
         {/* Text Content */}
         <div className="order-2 md:order-1 relative z-20 pb-20 md:pb-24 lg:pb-32 -mt-20 md:mt-0">
           {/* Mobile Text Box Styling - Only visible on small screens */}
-          <div className="md:hidden absolute inset-0 bg-navy-dark/80 backdrop-blur-2xl border-t border-white/10 rounded-t-[4rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] -z-10" />
+          <div className="md:hidden absolute inset-0 bg-navy-dark/80 backdrop-blur-2xl border-t border-white/10 rounded-t-[2.5rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] -z-10" />
 
           <motion.div
             key={current}
             initial={{ opacity: 0, x: -30 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-            className="relative space-y-10 text-center md:text-left px-6 py-16 md:p-0"
+            className="relative space-y-10 text-center md:text-left px-6 py-12 md:p-0"
           >
             <div className="space-y-6">
               {/* Tag Carousel synced with Image */}
@@ -66,8 +66,8 @@ const HeroSection = () => {
                 </AnimatePresence>
               </div>
 
-              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black text-white leading-[0.9] tracking-tighter uppercase">
-                <span className="block font-light text-white/70 lg:text-5xl tracking-[0.15em] mb-4">Onyekwere</span>
+              <h1 className="text-4xl sm:text-7xl lg:text-8xl font-display font-black text-white leading-[0.9] tracking-tighter uppercase">
+                <span className="block font-light text-white/70 text-2xl lg:text-5xl tracking-[0.15em] mb-4">Onyekwere</span>
                 <span className="relative inline-block">
                   Akym <span className="text-gold italic">Uche</span>
                   <motion.div
@@ -80,7 +80,7 @@ const HeroSection = () => {
               </h1>
             </div>
 
-            <p className="text-gold-light/90 font-body text-xl lg:text-3xl max-w-xl mx-auto md:mx-0 leading-relaxed font-light">
+            <p className="text-gold-light/90 font-body text-lg lg:text-3xl max-w-xl mx-auto md:mx-0 leading-relaxed font-light">
               Building a <span className="text-white font-bold">Resilient Abia</span> through selfless service and community-driven progress.
             </p>
 
