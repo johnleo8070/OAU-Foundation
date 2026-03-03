@@ -46,7 +46,7 @@ const HeroSection = () => {
             <div className="space-y-6">
               {/* Tag Carousel synced with Image */}
               <div className="h-8 overflow-hidden">
-                <AnimatePresence mode="wait">
+                <AnimatePresence>
                   <motion.p
                     key={current}
                     initial={{ y: 20, opacity: 0 }}
@@ -110,14 +110,14 @@ const HeroSection = () => {
 
         {/* Hero Image Carousel */}
         <div className="order-1 md:order-2 flex justify-center lg:justify-end relative h-[450px] sm:h-[600px] lg:h-[750px] items-end">
-          <AnimatePresence mode="wait" initial={false}>
+          <AnimatePresence mode="popLayout" initial={false}>
             <motion.div
               key={current}
               initial={{ opacity: 0, x: 100, scale: 0.95 }}
               animate={{ opacity: 1, x: 0, scale: 1 }}
               exit={{ opacity: 0, x: -100, scale: 1.05 }}
               transition={{
-                duration: 1.2,
+                duration: 0.8,
                 ease: [0.16, 1, 0.3, 1]
               }}
               className="absolute inset-0 flex items-end justify-center lg:justify-end"
