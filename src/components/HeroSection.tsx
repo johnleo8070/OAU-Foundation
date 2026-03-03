@@ -35,7 +35,7 @@ const HeroSection = () => {
       <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-20 items-center md:items-end relative z-10 h-full">
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-20 items-center md:items-end relative z-10 h-full left-[-12px]">
 
         {/* Text Content */}
         <div className="order-2 md:order-1 relative z-20 pb-20 md:pb-24 lg:pb-32 -mt-20 md:mt-0">
@@ -115,7 +115,7 @@ const HeroSection = () => {
         </div>
 
         {/* Hero Image Carousel */}
-        <div className="order-1 md:order-2 flex justify-center lg:justify-end relative h-[450px] sm:h-[600px] lg:h-[750px] items-end">
+        <div className="order-1 md:order-2 flex justify-center lg:justify-center relative h-[450px] sm:h-[600px] lg:h-[750px] items-end">
           <AnimatePresence mode="popLayout" initial={false}>
             <motion.div
               key={current}
@@ -126,7 +126,7 @@ const HeroSection = () => {
                 duration: 0.8,
                 ease: [0.16, 1, 0.3, 1]
               }}
-              className="absolute inset-0 flex items-end justify-center lg:justify-end"
+              className="absolute inset-0 flex items-end justify-center lg:justify-center"
             >
               <div className="relative group/hero">
                 {/* Dynamic Aura */}
@@ -144,7 +144,7 @@ const HeroSection = () => {
           </AnimatePresence>
 
           {/* Static Cinematic Accents */}
-          <div className="absolute inset-0 flex items-center justify-center lg:justify-end pointer-events-none opacity-20">
+          <div className="absolute inset-0 flex items-center justify-center lg:justify-center pointer-events-none opacity-20">
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
