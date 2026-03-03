@@ -38,6 +38,7 @@ const Navbar = () => {
           <img
             src={logo}
             alt="OAU Foundation Logo"
+            fetchPriority="high"
             className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
           />
           <div className="flex flex-col">

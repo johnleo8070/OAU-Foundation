@@ -17,6 +17,12 @@ const HeroSection = () => {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
+    // Preload all carousel images
+    slides.forEach((slide) => {
+      const img = new Image();
+      img.src = slide.image;
+    });
+
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, 5000); // 5 seconds per slide
@@ -129,6 +135,8 @@ const HeroSection = () => {
                 <img
                   src={slides[current].image}
                   alt={`Onyekwere Akym Uche - ${slides[current].tag}`}
+                  loading="eager"
+                  fetchPriority="high"
                   className="relative z-10 w-[22rem] sm:w-[32rem] lg:w-[46rem] h-auto object-contain drop-shadow-[0_50px_100px_rgba(0,0,0,0.6)] group-hover/hero:scale-[1.02] transition-transform duration-1000"
                 />
               </div>

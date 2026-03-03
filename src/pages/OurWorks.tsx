@@ -122,7 +122,8 @@ const OurWorks = () => {
                   <img
                     src={traditionalImg}
                     alt="Onyekwere Akym Uche"
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
                     decoding="async"
                     className="w-full max-w-[420px] h-auto object-cover scale-[1.02]"
                   />
