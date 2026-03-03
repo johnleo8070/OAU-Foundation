@@ -40,42 +40,58 @@ const ValuesSection = () => (
       </motion.div>
 
       <div className="grid md:grid-cols-2 gap-16 items-center">
-        <div className="space-y-10">
+        <div className="space-y-12">
           {values.map((v, i) => (
             <motion.div
               key={v.title}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.4, delay: i * 0.1 }}
-              className="flex gap-6 group"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{
+                duration: 0.8,
+                ease: [0.16, 1, 0.3, 1],
+                delay: i * 0.15
+              }}
+              className="flex gap-8 group"
             >
-              <div className="flex-shrink-0 w-16 h-16 rounded-2xl gradient-gold flex items-center justify-center shadow-lg transition-all">
-                <v.icon className="text-navy" size={28} />
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-display font-bold text-navy text-xl group-hover:text-gold transition-colors">{v.title}</h3>
-                <p className="text-warm-gray font-body text-base leading-relaxed font-light">{v.desc}</p>
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                className="flex-shrink-0 w-20 h-20 rounded-3xl gradient-gold flex items-center justify-center shadow-xl transition-all relative z-10"
+              >
+                <v.icon className="text-navy" size={32} />
+              </motion.div>
+              <div className="space-y-3">
+                <h3 className="font-display font-black text-navy text-2xl lg:text-3xl group-hover:text-gold transition-colors leading-tight">{v.title}</h3>
+                <p className="text-warm-gray font-body text-lg lg:text-xl leading-relaxed font-light opacity-80 group-hover:opacity-100 transition-opacity">{v.desc}</p>
               </div>
             </motion.div>
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6 }}
-          className="flex justify-center"
+          initial={{ opacity: 0, x: 50, scale: 0.9 }}
+          whileInView={{ opacity: 1, x: 0, scale: 1 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{
+            duration: 1,
+            ease: [0.16, 1, 0.3, 1],
+            delay: 0.2
+          }}
+          className="flex justify-center xl:justify-end"
         >
-          <div className="relative group p-4">
-            <div className="absolute -inset-2 bg-gold/10 rounded-[3rem] blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="relative group p-6 max-w-[450px]">
+            {/* Soft Glow */}
+            <div className="absolute -inset-4 bg-gold/20 rounded-[4rem] blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
+
+            {/* Border Accent */}
+            <div className="absolute -inset-4 border-2 border-gold/10 rounded-[3.5rem] group-hover:scale-105 transition-transform duration-700" />
+
             <img
               src={aboutImg}
               alt="Onyekwere Akym Uche seated"
               loading="lazy"
               decoding="async"
-              className="relative z-10 rounded-[2.5rem] shadow-2xl w-80 lg:w-96 object-cover border-8 border-white group-hover:scale-[1.02] transition-transform duration-500"
+              className="relative z-10 rounded-[3rem] shadow-[0_30px_60px_rgba(0,0,0,0.15)] w-full object-cover border-[10px] border-white group-hover:scale-[1.03] group-hover:-rotate-1 transition-all duration-700 ease-out"
             />
           </div>
         </motion.div>

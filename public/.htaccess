@@ -1,0 +1,21 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # 1. ENFORCE HTTPS (Optional but Recommended)
+  # RewriteCond %{HTTPS} off
+  # RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+  # 2. IGNORE BACKEND FOLDER (So API calls don't get handled by React)
+  RewriteCond %{REQUEST_URI} ^/backend [NC]
+  RewriteRule ^ - [L]
+
+  # 3. IGNORE REAL FILES AND DIRECTORIES (CSS, JS, Images, etc.)
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # 4. SPA FALLBACK (Everything else goes to index.html)
+  # This makes React Router handle all your page transitions and reloads
+  RewriteRule ^ index.html [L]
+</IfModule>

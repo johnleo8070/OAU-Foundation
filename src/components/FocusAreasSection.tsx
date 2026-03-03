@@ -20,13 +20,17 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.5, y: 30, rotate: -5 },
+  hidden: { opacity: 0, scale: 0.9, y: 40 },
   visible: {
     opacity: 1,
     scale: 1,
     y: 0,
-    rotate: 0,
-    transition: { type: "spring" as const, stiffness: 150, damping: 15 }
+    transition: {
+      type: "spring" as const,
+      stiffness: 120,
+      damping: 20,
+      duration: 0.6
+    }
   }
 };
 
@@ -65,30 +69,31 @@ const FocusAreasSection = () => (
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        className="grid grid-cols-2 lg:grid-cols-3 gap-8 max-w-5xl mx-auto"
+        viewport={{ once: true, amount: 0.2 }}
+        className="grid grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12 max-w-6xl mx-auto"
       >
         {areas.map((a) => (
           <motion.div
             key={a.label}
-            variants={{
-              hidden: { opacity: 0, y: 15 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.4 }
-              }
-            }}
+            variants={itemVariants}
             whileHover={{
-              y: -5,
-              transition: { duration: 0.2 }
+              y: -12,
+              scale: 1.05,
+              transition: { duration: 0.3, ease: [0.16, 1, 0.3, 1] }
             }}
-            className="flex flex-col items-center gap-6 bg-navy-light/20 rounded-[2rem] p-8 md:p-10 border border-white/5 hover:border-gold/30 transition-all group cursor-default shadow-lg"
+            className="flex flex-col items-center gap-6 bg-white/5 backdrop-blur-sm rounded-[2.5rem] p-8 md:p-12 border border-white/10 hover:border-gold/30 transition-all group cursor-default shadow-2xl overflow-hidden relative"
           >
-            <div className="w-16 h-16 bg-white/5 rounded-2xl flex items-center justify-center text-gold mb-2 group-hover:bg-gold/10 transition-colors">
-              <a.icon size={32} />
-            </div>
-            <span className="text-white font-display font-bold text-lg tracking-wide uppercase">{a.label}</span>
+            <div className="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <motion.div
+              whileHover={{ rotate: 5, scale: 1.1 }}
+              className="w-20 h-20 bg-gold/10 rounded-2xl flex items-center justify-center text-gold mb-4 group-hover:bg-gold group-hover:text-navy transition-all duration-500 shadow-inner relative z-10"
+            >
+              <a.icon size={40} />
+            </motion.div>
+
+            <span className="text-white font-display font-black text-xl lg:text-2xl tracking-wide uppercase relative z-10 group-hover:text-gold transition-colors">{a.label}</span>
+            <div className="w-12 h-1 bg-gold/30 rounded-full group-hover:w-20 group-hover:bg-gold transition-all duration-500 relative z-10" />
           </motion.div>
         ))}
       </motion.div>

@@ -39,11 +39,11 @@ const JoinUsSection = () => {
 
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true, amount: 0.1 }}
-          transition={{ duration: 0.6 }}
-          className="bg-white/40 border border-white/20 rounded-[3.5rem] p-8 md:p-16 shadow-xl relative overflow-hidden"
+          transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+          className="bg-white/40 border border-white/20 rounded-[4rem] p-8 md:p-16 shadow-2xl relative overflow-hidden"
         >
           {/* Inner glass highlight */}
           <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent pointer-events-none" />
@@ -51,11 +51,11 @@ const JoinUsSection = () => {
           <div className="grid lg:grid-cols-2 gap-16 items-center relative z-10">
             {/* Info */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.5 }}
-              className="text-center md:text-left space-y-10"
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+              className="text-center md:text-left space-y-12"
             >
               <div className="space-y-4">
                 <h2 className="text-4xl sm:text-6xl font-display font-black text-navy leading-tight">
@@ -72,11 +72,16 @@ const JoinUsSection = () => {
                 {words.map((w, i) => (
                   <motion.span
                     key={w}
-                    initial={{ opacity: 0, scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true, amount: 0.1 }}
-                    transition={{ duration: 0.4, delay: i * 0.1 }}
-                    className="bg-navy text-white font-body font-bold px-8 py-3.5 rounded-2xl text-sm shadow-lg cursor-default border border-white/10"
+                    transition={{
+                      type: "spring",
+                      stiffness: 260,
+                      damping: 20,
+                      delay: i * 0.1 + 0.5
+                    }}
+                    className="bg-navy text-white font-body font-bold px-8 py-3.5 rounded-2xl text-sm shadow-xl cursor-default border border-white/10 hover:bg-gold hover:text-navy transition-all duration-300"
                   >
                     {w}
                   </motion.span>
@@ -86,11 +91,11 @@ const JoinUsSection = () => {
 
             {/* Form */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.1 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="bg-navy rounded-[2.5rem] p-8 md:p-12 shadow-2xl border border-white/5 relative group overflow-hidden"
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+              className="bg-navy rounded-[3rem] p-8 md:p-12 shadow-[0_40px_80px_rgba(0,0,0,0.3)] border border-white/5 relative group overflow-hidden"
             >
               {/* Decorative inner light for navy - Simplified */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-full blur-[40px] -translate-y-1/2 translate-x-1/2" />

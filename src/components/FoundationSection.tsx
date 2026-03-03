@@ -30,20 +30,24 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
     }
   }
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 50, scale: 0.9, rotateX: 15 },
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    rotateX: 0,
-    transition: { type: "spring" as const, stiffness: 100, damping: 20 }
+    transition: {
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 20,
+      duration: 0.6
+    }
   }
 };
 
@@ -91,23 +95,30 @@ const FoundationSection = () => (
         {pillars.map((p) => (
           <motion.div
             key={p.title}
-            variants={{
-              hidden: { opacity: 0, y: 15 },
-              visible: {
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.4 }
-              }
+            variants={itemVariants}
+            whileHover={{
+              y: -15,
+              scale: 1.02,
+              transition: { duration: 0.3, ease: "easeOut" }
             }}
-            whileHover={{ y: -5 }}
-            className="bg-white rounded-[1.5rem] p-8 shadow-xl hover:shadow-2xl transition-all border-t-8 border-navy group relative overflow-hidden"
+            className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.05)] border-t-[6px] border-navy group relative overflow-hidden h-full flex flex-col items-center text-center hover:shadow-2xl transition-all"
           >
-            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-navy/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-            <div className="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-gold/10 transition-colors">
-              <p.icon className="text-gold" size={32} />
-            </div>
-            <h3 className="font-display font-bold text-navy text-xl mb-4 group-hover:text-gold transition-colors">{p.title}</h3>
-            <p className="text-warm-gray font-body text-sm leading-relaxed opacity-80">{p.desc}</p>
+            <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-gold/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+            <motion.div
+              whileHover={{ rotate: 10, scale: 1.1 }}
+              className="w-20 h-20 bg-navy/5 rounded-3xl flex items-center justify-center mb-8 group-hover:bg-gold/10 transition-colors duration-500 relative z-10 shadow-inner"
+            >
+              <p.icon className="text-gold" size={36} />
+            </motion.div>
+
+            <h3 className="font-display font-black text-navy text-2xl mb-5 group-hover:text-gold transition-colors relative z-10 leading-tight">
+              {p.title}
+            </h3>
+
+            <p className="text-warm-gray font-body text-base leading-relaxed opacity-70 group-hover:opacity-90 transition-opacity relative z-10">
+              {p.desc}
+            </p>
           </motion.div>
         ))}
       </motion.div>

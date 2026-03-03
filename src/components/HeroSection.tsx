@@ -1,92 +1,157 @@
-import heroImg from "@/assets/hero-img.png";
+import hero1 from "@/assets/hero-img.png";
+import hero2 from "@/assets/traditional.jpeg";
+import hero3 from "@/assets/casual.jpeg";
+import hero4 from "@/assets/pointing.jpeg";
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
 
-const HeroSection = () => (
-  <section id="home" className="relative min-h-screen flex items-center gradient-navy overflow-hidden pt-20">
-    <div className="container mx-auto px-4 grid md:grid-cols-2 gap-0 md:gap-12 items-center">
+const slides = [
+  { tag: "Entrepreneur", image: hero1, color: "text-gold" },
+  { tag: "Humanitarian", image: hero2, color: "text-white" },
+  { tag: "Politician", image: hero3, color: "text-gold" },
+  { tag: "Visionary Leader", image: hero4, color: "text-white" },
+];
 
-      {/* Text Content in Glass Box */}
-      <motion.div
-        className="order-2 md:order-1 relative z-20 group translate-y-[-140px] md:translate-y-0"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
-      >
-        {/* Decorative background glow - Optimized for performance */}
-        <div className="absolute -inset-1 bg-gradient-to-r from-gold/5 to-navy-light/5 rounded-[2.5rem] blur-md lg:blur-lg opacity-25 group-hover:opacity-40 transition duration-700" />
+const HeroSection = () => {
+  const [current, setCurrent] = useState(0);
 
-        <div className="relative space-y-8 text-center md:text-left bg-navy-dark/40 backdrop-blur-md border border-white/5 p-8 md:p-14 rounded-[2.5rem] shadow-xl">
-          <div className="space-y-4">
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.4 }}
-              className="text-gold font-body font-bold tracking-[0.3em] uppercase text-xs sm:text-sm"
-            >
-              Entrepreneur · Humanitarian · Politician
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3, duration: 0.5 }}
-              className="text-5xl sm:text-6xl lg:text-7xl font-display font-black text-white leading-[1.1]"
-            >
-              Onyekwere<br /><span className="text-gold-light">Akym Uche</span>
-            </motion.h1>
-          </div>
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 5000); // 5 seconds per slide
+    return () => clearInterval(timer);
+  }, []);
 
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            className="text-gold-light/80 font-body text-lg sm:text-xl max-w-md mx-auto md:mx-0 leading-relaxed font-light"
-          >
-            Founder of <span className="font-bold text-gold">THE OAU FOUNDATION</span>, dedicated to <span className="text-white">uplifting communities</span> and empowering individuals.
-          </motion.p>
+  return (
+    <section id="home" className="relative h-auto lg:h-[88vh] min-h-[700px] flex items-center gradient-navy overflow-hidden pt-32 pb-0 lg:pt-20">
+      {/* Dynamic Background Accents */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-white/5 rounded-full blur-[100px] translate-y-1/2 -translate-x-1/2 pointer-events-none" />
+
+      <div className="container mx-auto px-4 grid md:grid-cols-2 gap-12 lg:gap-20 items-center md:items-end relative z-10 h-full">
+
+        {/* Text Content */}
+        <div className="order-2 md:order-1 relative z-20 pb-20 md:pb-24 lg:pb-32 -mt-20 md:mt-0">
+          {/* Mobile Text Box Styling - Only visible on small screens */}
+          <div className="md:hidden absolute inset-0 bg-navy-dark/80 backdrop-blur-2xl border-t border-white/10 rounded-t-[4rem] shadow-[0_-20px_50px_rgba(0,0,0,0.5)] -z-10" />
 
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.4 }}
-            className="flex flex-col sm:flex-row gap-5 justify-center md:justify-start pt-4"
+            key={current}
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="relative space-y-10 text-center md:text-left px-6 py-16 md:p-0"
           >
-            <Link
-              to="/bio"
-              className="gradient-gold text-navy font-body font-bold uppercase tracking-[0.15em] px-10 py-4 rounded-xl shadow-xl hover:shadow-gold/20 transition-all text-xs sm:text-sm"
-            >
-              Learn More
-            </Link>
-            <Link
-              to="/get-involved"
-              className="gradient-gold border border-white/10 text-white font-body font-bold uppercase tracking-[0.15em] px-10 py-4 rounded-xl hover:bg-gold hover:text-navy hover:border-gold transition-all text-xs sm:text-sm"
-            >
-              Join Us
-            </Link>
+            <div className="space-y-6">
+              {/* Tag Carousel synced with Image */}
+              <div className="h-8 overflow-hidden">
+                <AnimatePresence mode="wait">
+                  <motion.p
+                    key={current}
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: -20, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "circOut" }}
+                    className={`${slides[current].color} font-display font-black tracking-[0.4em] uppercase text-sm sm:text-base`}
+                  >
+                    {slides[current].tag}
+                  </motion.p>
+                </AnimatePresence>
+              </div>
+
+              <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display font-black text-white leading-[0.9] tracking-tighter uppercase">
+                <span className="block font-light text-white/70 lg:text-5xl tracking-[0.15em] mb-4">Onyekwere</span>
+                <span className="relative inline-block">
+                  Akym <span className="text-gold italic">Uche</span>
+                  <motion.div
+                    initial={{ width: 0 }}
+                    animate={{ width: "100%" }}
+                    transition={{ delay: 1, duration: 1 }}
+                    className="absolute -bottom-2 left-0 h-1.5 gradient-gold rounded-full opacity-40"
+                  />
+                </span>
+              </h1>
+            </div>
+
+            <p className="text-gold-light/90 font-body text-xl lg:text-3xl max-w-xl mx-auto md:mx-0 leading-relaxed font-light">
+              Building a <span className="text-white font-bold">Resilient Abia</span> through selfless service and community-driven progress.
+            </p>
+
+            <div className="flex flex-col sm:flex-row gap-6 justify-center md:justify-start pt-6">
+              <Link
+                to="/bio"
+                className="group relative overflow-hidden bg-gold text-navy font-display font-black uppercase tracking-widest px-12 py-5 rounded-2xl shadow-[0_20px_40px_rgba(212,175,55,0.2)] hover:shadow-gold/40 transition-all duration-500 hover:-translate-y-1"
+              >
+                <span className="relative z-10">Founder's Journey</span>
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity" />
+              </Link>
+              <Link
+                to="/foundation"
+                className="group border-2 border-white/20 text-white font-display font-black uppercase tracking-widest px-12 py-5 rounded-2xl hover:bg-white hover:text-navy transition-all duration-500 hover:-translate-y-1"
+              >
+                Our Legacy
+              </Link>
+            </div>
+
+            {/* Carousel Dots */}
+            <div className="flex justify-center md:justify-start gap-3 mt-12">
+              {slides.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrent(i)}
+                  className={`w-3 h-3 rounded-full transition-all duration-500 ${current === i ? "bg-gold w-10" : "bg-white/20 hover:bg-white/40"
+                    }`}
+                />
+              ))}
+            </div>
           </motion.div>
         </div>
-      </motion.div>
 
-      {/* Image */}
-      <motion.div
-        className="flex justify-center order-1 md:order-2 relative z-10"
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
-        <div className="relative">
-          <div className="absolute -inset-4 bg-gold/10 rounded-full blur-xl opacity-30" />
-          <img
-            src={heroImg}
-            alt="Onyekwere Akym Uche in blue suit"
-            loading="eager"
-            decoding="async"
-            className="relative z-10 w-[25rem] md:w-[32rem] lg:w-[40rem] object-contain drop-shadow-xl lg:drop-shadow-2xl translate-y-[20px] md:translate-y-[60px]"
-          />
+        {/* Hero Image Carousel */}
+        <div className="order-1 md:order-2 flex justify-center lg:justify-end relative h-[450px] sm:h-[600px] lg:h-[750px] items-end">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={current}
+              initial={{ opacity: 0, x: 100, scale: 0.95 }}
+              animate={{ opacity: 1, x: 0, scale: 1 }}
+              exit={{ opacity: 0, x: -100, scale: 1.05 }}
+              transition={{
+                duration: 1.2,
+                ease: [0.16, 1, 0.3, 1]
+              }}
+              className="absolute inset-0 flex items-end justify-center lg:justify-end"
+            >
+              <div className="relative group/hero">
+                {/* Dynamic Aura */}
+                <div className="absolute -inset-10 bg-gold/10 rounded-full blur-[120px] opacity-0 group-hover/hero:opacity-100 transition-opacity duration-1000" />
+
+                <img
+                  src={slides[current].image}
+                  alt={`Onyekwere Akym Uche - ${slides[current].tag}`}
+                  className="relative z-10 w-[22rem] sm:w-[32rem] lg:w-[46rem] h-auto object-contain drop-shadow-[0_50px_100px_rgba(0,0,0,0.6)] group-hover/hero:scale-[1.02] transition-transform duration-1000"
+                />
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          {/* Static Cinematic Accents */}
+          <div className="absolute inset-0 flex items-center justify-center lg:justify-end pointer-events-none opacity-20">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
+              className="w-[110%] aspect-square border border-gold/10 rounded-full scale-90"
+            />
+            <motion.div
+              animate={{ rotate: -360 }}
+              transition={{ duration: 70, repeat: Infinity, ease: "linear" }}
+              className="w-[130%] aspect-square border border-white/5 rounded-full scale-75"
+            />
+          </div>
         </div>
-      </motion.div>
-    </div>
-  </section>
-);
+      </div>
+    </section>
+  );
+};
 
 export default HeroSection;
